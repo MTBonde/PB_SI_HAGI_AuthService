@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+    <PackageReference Include="Microsoft.IdentityModel.Validators" Version="8.14.0" />
   </ItemGroup>
 
   <ItemGroup>
