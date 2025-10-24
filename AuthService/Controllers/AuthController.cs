@@ -41,7 +41,7 @@ public class AuthController : ControllerBase
 
     private string GenerateJWToken()
     {
-        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345")); //TODO: replace with proper secret
+        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345superSecretKey@345")); //TODO: replace with proper secret
         var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
         
         var tokeOptions = new JwtSecurityToken(
