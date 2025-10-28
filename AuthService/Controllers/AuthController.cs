@@ -25,7 +25,7 @@ public class AuthController : ControllerBase
             //Dummy login - always succeeds with hardcoded tokens
             return Ok(new
             {
-                token = GenerateJWToken(),
+                token = GenerateJWToken(request.Username),
                 refreshToken = "dummy-refresh-67890" //TODO: Discuss need for refresh vs. invalidation (regular token validation / session login)
             });
         }
