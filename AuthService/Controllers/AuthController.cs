@@ -20,6 +20,8 @@ public class AuthController : ControllerBase
         
         if (request.Password == value)
         {
+            Console.WriteLine("Login success!");
+            
             //Dummy login - always succeeds with hardcoded tokens
             return Ok(new
             {
@@ -28,6 +30,7 @@ public class AuthController : ControllerBase
             });
         }
 
+        Console.WriteLine("Login failed - Invalid username or password");
         return Unauthorized(); //Login failed
     }
 
@@ -51,6 +54,30 @@ public class AuthController : ControllerBase
             expires: DateTime.Now.AddHours(12), //Long session, just as temp to verify it works. Later add revokation / refresh
             signingCredentials: signinCredentials
         );
+        return new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+    }
+
+    private string GenerateJWToken(string username)
+    {
+        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345superSecretKey@345")); //TODO: replace with proper secret
+        var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+        var role = username == "admin" ? "admin" : "user"; //Best way of doing this? Probably not...
+
+        var claims = new List<Claim>
+        {
+            new(ClaimTypes.Name, username),
+            new(ClaimTypes.Role, role)
+        };
+        
+        var tokeOptions = new JwtSecurityToken(
+            issuer: "https://localhost:5001",
+            audience: "https://localhost:5001",
+            claims: claims,
+            expires: DateTime.Now.AddHours(12), //Long session, just as temp to verify it works. Later add revokation / refresh
+            signingCredentials: signinCredentials
+        );
+        
         return new JwtSecurityTokenHandler().WriteToken(tokeOptions);
     }
 }
