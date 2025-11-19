@@ -4,9 +4,11 @@ EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
-COPY ["AuthService.csproj", "."]
-RUN dotnet restore
-COPY . .
+COPY ["AuthService/AuthService.csproj", "AuthService/"]
+RUN dotnet restore "AuthService/AuthService.csproj"
+COPY AuthService/ AuthService/
+COPY version.txt AuthService/
+WORKDIR /src/AuthService
 RUN dotnet build "AuthService.csproj" -c Release -o /app/build
 
 FROM build AS publish
