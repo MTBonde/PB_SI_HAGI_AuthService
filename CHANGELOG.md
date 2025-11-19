@@ -1,3 +1,15 @@
+## 0.5.1 (2025-11-19)
+
+#### Bug Fixes
+
+* **ci:** ensure semantic release only runs after CI passes (5f89f5de)
+
+#### Chores
+
+* **ci:** rename workflow to "Semantic Release" for clarity (ef5b90ec)
+* **docker:** update Dockerfile and workflows to handle versioning via version.txt (0567addc)
+
+
 ## 0.5.0 (2025-11-19)
 
 #### Feature
