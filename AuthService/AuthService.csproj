@@ -17,4 +17,10 @@
     <Content Include=".github\workflows\ci.yml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="version.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
