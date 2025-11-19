@@ -53,7 +53,9 @@ jobs:
 
       - name: Trigger CD workflow
         if: steps.semantic_release.outputs.version != ''
-        run: gh workflow run cd.yml
+        run: |
+          gh workflow run cd.yml \
+            -f version=${{ steps.semantic_release.outputs.version }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
