@@ -1,3 +1,10 @@
+## 0.5.3 (2025-11-19)
+
+#### Bug Fixes
+
+* **ci:** use head_branch instead of head_sha to avoid detached HEAD (2bda483b)
+
+
 ## 0.5.1 (2025-11-19)
 
 #### Bug Fixes
