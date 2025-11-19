@@ -1,3 +1,14 @@
+## 0.5.5 (2025-11-19)
+
+#### Bug Fixes
+
+* **ci:** add actions write permission to trigger CD workflow (aafc04cc)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.4 [skip ci] (4cbbbe64)
+
+
 ## 0.5.4 (2025-11-19)
 
 #### Bug Fixes
