@@ -50,6 +50,12 @@ jobs:
           git commit -m "chore: update CHANGELOG.md and version.txt for ${{ steps.semantic_release.outputs.version }} [skip ci]"
           git push
 
+      - name: Trigger CD workflow
+        if: steps.semantic_release.outputs.version != ''
+        run: gh workflow run cd.yml
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: No release needed
         if: steps.semantic_release.outputs.version == ''
         run: echo "No release necessary, no relevant commits found."
