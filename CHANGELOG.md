@@ -1,3 +1,14 @@
+## 0.5.4 (2025-11-19)
+
+#### Bug Fixes
+
+* **ci:** trigger CD workflow after semantic release completes (f20547f8)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.3 [skip ci] (62a9fd9b)
+
+
 ## 0.5.3 (2025-11-19)
 
 #### Bug Fixes
