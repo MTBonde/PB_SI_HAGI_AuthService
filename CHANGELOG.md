@@ -1,3 +1,14 @@
+## 0.5.6 (2025-11-19)
+
+#### Bug Fixes
+
+* **ci:** add workflow_dispatch trigger to CD and pass version input (fefa2234)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.5 [skip ci] (2feb117c)
+
+
 ## 0.5.5 (2025-11-19)
 
 #### Bug Fixes
