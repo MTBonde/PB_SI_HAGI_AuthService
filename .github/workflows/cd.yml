@@ -32,5 +32,5 @@ jobs:
           VERSION="${{ inputs.version }}"
           VERSION_CLEAN="${VERSION#v}"
 
-          docker build -t "$IMAGE_NAME:$VERSION_CLEAN" -f AuthService/Dockerfile AuthService
+          docker build -t "$IMAGE_NAME:$VERSION_CLEAN" -f AuthService/Dockerfile .
           docker push "$IMAGE_NAME:$VERSION_CLEAN"
