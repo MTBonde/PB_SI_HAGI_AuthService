@@ -1,3 +1,14 @@
+## 0.5.16 (2025-11-21)
+
+#### Bug Fixes
+
+* **ci:** adjust Docker build context in CD workflow (202ca137)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.15 [skip ci] (1c0d3fca)
+
+
 ## 0.5.15 (2025-11-21)
 
 #### Bug Fixes
