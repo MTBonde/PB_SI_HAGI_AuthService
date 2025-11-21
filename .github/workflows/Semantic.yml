@@ -1,4 +1,4 @@
-name: Release - Auto Semantic Versioning.
+name: Release - Auto Semantic Versioning
 
 on:
   push:
