@@ -1,3 +1,14 @@
+## 0.5.12 (2025-11-21)
+
+#### Bug Fixes
+
+* **ci:** enable admin override for auto-merging version update PRs (8047883a)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.11 [skip ci] (#18) (aa4f2b83)
+
+
 ## 0.5.11 (2025-11-21)
 
 #### Bug Fixes
