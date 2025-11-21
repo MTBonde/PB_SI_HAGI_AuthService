@@ -1,3 +1,14 @@
+## 0.5.15 (2025-11-21)
+
+#### Bug Fixes
+
+* **ci:** enable manual triggering and automate CD workflow from Semantic release (f7b5c58c)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.14 [skip ci] (bf03e102)
+
+
 ## 0.5.14 (2025-11-21)
 
 #### Bug Fixes
