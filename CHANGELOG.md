@@ -1,3 +1,14 @@
+## 0.5.14 (2025-11-21)
+
+#### Bug Fixes
+
+* **ci:** simplify semantic release workflow by removing PR creation for version updates (3da1bd07)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.13 [skip ci] (ab7dcdf7)
+
+
 ## 0.5.13 (2025-11-21)
 
 #### Bug Fixes
