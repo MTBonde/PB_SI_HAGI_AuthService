@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   test:
@@ -70,6 +71,14 @@ jobs:
             git commit -m "chore: update CHANGELOG.md and version.txt for ${{ steps.semantic_release.outputs.version }} [skip ci]"
             git push
           fi
+
+      - name: Trigger CD workflow
+        if: steps.semantic_release.outputs.version != ''
+        run: |
+          gh workflow run cd.yml -f version=${{ steps.semantic_release.outputs.version }}
+          echo "Triggered CD workflow for version ${{ steps.semantic_release.outputs.version }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: No release needed
         if: steps.semantic_release.outputs.version == ''
