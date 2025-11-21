@@ -1,3 +1,14 @@
+## 0.5.13 (2025-11-21)
+
+#### Bug Fixes
+
+* **ci:** improve reliability of auto-merge for version update PRs (092fede6)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.12 [skip ci] (77ffd976)
+
+
 ## 0.5.12 (2025-11-21)
 
 #### Bug Fixes
