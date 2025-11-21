@@ -1,3 +1,14 @@
+## 0.5.11 (2025-11-21)
+
+#### Bug Fixes
+
+* try again now aut merge allowed in settings (e1b19417)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.10 [skip ci] (cba02178)
+
+
 ## 0.5.10 (2025-11-21)
 
 #### Bug Fixes
