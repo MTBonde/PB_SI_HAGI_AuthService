@@ -3,12 +3,6 @@ name: CD - Build and Push Docker Image
 on:
   release:
     types: [published]
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version tag (e.g., v0.5.0)'
-        required: true
-        type: string
 
 jobs:
   docker:
@@ -32,12 +26,7 @@ jobs:
         run: |
           IMAGE_NAME=ghcr.io/mtbonde/hagi-authservice
 
-          # Get version from release event or workflow_dispatch input
-          if [ "${{ github.event_name }}" = "release" ]; then
-            VERSION=${{ github.event.release.tag_name }}
-          else
-            VERSION=${{ inputs.version }}
-          fi
+          VERSION=${{ github.event.release.tag_name }}
 
           VERSION_CLEAN=${VERSION#v}
 
