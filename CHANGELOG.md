@@ -1,3 +1,10 @@
+## 0.5.9 (2025-11-21)
+
+#### Bug Fixes
+
+* **ci:** automate version update with PR creation and auto-merge (f5e411c5)
+
+
 ## 0.5.6 (2025-11-19)
 
 #### Bug Fixes
