@@ -6,7 +6,6 @@ on:
 
 permissions:
   contents: write
-  actions: write
 
 jobs:
   test:
@@ -57,14 +56,20 @@ jobs:
       - name: Create version.txt and commit changes
         if: steps.semantic_release.outputs.version != ''
         run: |
+          set -e
           VERSION="${{ steps.semantic_release.outputs.version }}"
           VERSION_CLEAN="${VERSION#v}"
           echo "$VERSION_CLEAN" > version.txt
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add CHANGELOG.md version.txt
-          git commit -m "chore: update CHANGELOG.md and version.txt for ${{ steps.semantic_release.outputs.version }} [skip ci]"
-          git push
+          git add "CHANGELOG.md" "version.txt"
+          
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: update CHANGELOG.md and version.txt for ${{ steps.semantic_release.outputs.version }} [skip ci]"
+            git push
+          fi
 
 
       - name: No release needed
