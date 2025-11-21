@@ -87,19 +87,33 @@ jobs:
           base: main
           delete-branch: true
 
-      - name: Auto-merge version update PR with admin override
+      - name: Wait for PR and auto-merge with admin override
         if: steps.semantic_release.outputs.version != ''
         run: |
-          # Wait for PR to be created and get its number
-          sleep 5
-          PR_NUMBER=$(gh pr list --head auto/version-update-${{ steps.semantic_release.outputs.version }} --json number --jq '.[0].number')
-          if [ ! -z "$PR_NUMBER" ]; then
-            # Directly merge using admin override since this only changes CHANGELOG/version.txt
-            gh pr merge "$PR_NUMBER" --admin --squash
-            echo "Auto-merged PR #$PR_NUMBER with admin override"
-          else
-            echo "PR not found or already merged"
+          set -e
+          PR_BRANCH="auto/version-update-${{ steps.semantic_release.outputs.version }}"
+          
+          # Wait for PR to be created (up to 2 minutes)
+          echo "Waiting for PR to be created on branch $PR_BRANCH..."
+          for i in {1..24}; do
+            PR_NUMBER=$(gh pr list --head "$PR_BRANCH" --json number --jq '.[0].number // empty' 2>/dev/null || echo "")
+            if [ ! -z "$PR_NUMBER" ] && [ "$PR_NUMBER" != "null" ]; then
+              echo "Found PR #$PR_NUMBER"
+              break
+            fi
+            echo "Attempt $i: PR not found yet, waiting 5 seconds..."
+            sleep 5
+          done
+          
+          if [ -z "$PR_NUMBER" ] || [ "$PR_NUMBER" == "null" ]; then
+            echo "ERROR: PR not found after waiting"
+            exit 1
           fi
+          
+          # Merge immediately with admin override (bypass status checks for CHANGELOG/version.txt only changes)
+          echo "Merging PR #$PR_NUMBER with admin override..."
+          gh pr merge "$PR_NUMBER" --admin --squash
+          echo "Successfully auto-merged PR #$PR_NUMBER"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
