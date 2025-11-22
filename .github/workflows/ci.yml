@@ -2,7 +2,7 @@
 # Calls centralized CI workflow from PB_Alexor-Workflows
 # Runs on: PRs to main, pushes to feature branches (not main to avoid duplicate runs)
 
-name: CI - Build and Test
+name: CI - Build and Test.
 
 on:
   pull_request:
