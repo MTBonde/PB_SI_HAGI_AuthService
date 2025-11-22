@@ -1,3 +1,18 @@
+## 0.5.17 (2025-11-22)
+
+#### Bug Fixes
+
+* testing gitops workflow releases and builds (b1904899)
+
+#### Code Refactoring
+
+* **workflows:** consolidate CI/CD and release workflows (763e4649)
+
+#### Chores
+
+* update CHANGELOG.md and version.txt for 0.5.16 [skip ci] (85d80449)
+
+
 ## 0.5.16 (2025-11-21)
 
 #### Bug Fixes
